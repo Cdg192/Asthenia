@@ -454,15 +454,23 @@
             renderer.setSize(window.innerWidth, window.innerHeight);
         });
 
-        // Initialize
-        updateUI();
-        updateActionButtons();
-        addLog('🎮 Welcome to ASTHENIA', 'log-warning');
-        addLog('Caleb and Chazz prepare for battle!', 'log-normal');
-        addLog('The sorceress Tracey has taken Ptouneigh...', 'log-warning');
+        // Initialize when DOM is ready
+        function init() {
+            updateUI();
+            updateActionButtons();
+            addLog('🎮 Welcome to ASTHENIA', 'log-warning');
+            addLog('Caleb and Chazz prepare for battle!', 'log-normal');
+            addLog('The sorceress Tracey has taken Ptouneigh...', 'log-warning');
+            startCombat('cultist');
+            animate();
+        }
 
-        startCombat('cultist');
-        animate();
+        // Wait for DOM and animations to be ready
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', init);
+        } else {
+            setTimeout(init, 100);
+        }
     </script>
 </body>
 </html>
