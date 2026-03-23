@@ -140,8 +140,9 @@
             gold: 0,
             xp: 0,
             level: 1,
-            inventory: [],
+            inventory: ['Gibson Guitar'],
             party: ['Chazz'],
+            weapon: 'Gibson Guitar',
             
             // Game state
             location: 'cottage',
@@ -156,7 +157,7 @@
             locations: {
                 cottage: {
                     name: 'Caleb\'s Cottage',
-                    desc: 'Your humble home. A cozy cottage where you and your beloved cat Ptouneigh have lived peacefully... until she was taken.\nChazz stands ready by the door, fidgeting nervously.',
+                    desc: 'Your humble home. A cozy cottage where you and your beloved cat Ptouneigh have lived peacefully... until she was taken.\nYour trusty Gibson Guitar leans against the wall - you\'ve decided to use it as your weapon.\nChazz stands ready by the door, fidgeting nervously.',
                     exits: { north: 'village', east: 'forest' },
                     npcs: ['chazz_home']
                 },
@@ -241,7 +242,7 @@
             },
 
             npcs: {
-                chazz_home: 'Chazz says: "Caleb! We must act quickly! That sorceress Tracey took Ptouneigh! I\'ve heard rumors she\'s in a tower somewhere north of here, guarded by her cult followers. Are you ready to save our little friend?"',
+                chazz_home: 'Chazz says: "Caleb! We must act quickly! That sorceress Tracey took Ptouneigh! I\'ve heard rumors she\'s in a tower somewhere north of here, guarded by her cult followers. And nice choice bringing that Gibson Guitar - rock \'em!"',
                 villager: 'A villager whispers: "The Sionists have been growing bolder... they say Tracey promised them power. But be careful - they\'re everywhere."',
                 merchant: 'A merchant warns: "The sorceress Tracey is terribly nearsighted. Blind as a bat without magic! Maybe you can use that to your advantage?"',
                 blacksmith: 'The blacksmith: "Take this dagger. You\'ll need all the help you can get against Tracey and her cult minions."'
@@ -471,7 +472,13 @@
             const enemy = game.currentEnemy;
             if (cmd === 'attack') {
                 const damage = game.attack + Math.floor(Math.random() * 4) - 1;
-                addLog(`Caleb attacks for ${damage} damage!`, 'text-success');
+                const guitarAttacks = [
+                    `Caleb swings his Gibson Guitar like a weapon, striking ${enemy.name} for ${damage} damage!`,
+                    `Caleb riffs out on his Gibson, then smashes it into ${enemy.name} for ${damage} damage!`,
+                    `Caleb uses the Gibson Guitar to beat ${enemy.name}, dealing ${damage} damage!`,
+                    `The strings of the Gibson Guitar vibrate as Caleb clubs ${enemy.name} for ${damage} damage!`
+                ];
+                addLog(guitarAttacks[Math.floor(Math.random() * guitarAttacks.length)], 'text-success');
                 enemy.currentHp -= damage;
 
                 if (enemy.currentHp <= 0) {
@@ -545,8 +552,8 @@
             addLog('⚔️ ASTHENIA - RESCUE THE CAT ⚔️\n', 'text-location');
             addLog('Your beloved cat Ptouneigh has been captured by the evil sorceress Tracey!', 'text-story');
             addLog('She leads a cult of religious fanatics known as the Sionists.', 'text-story');
-            addLog('With your trusty sidekick Chazz by your side, you must journey north,', 'text-story');
-            addLog('defeat the cultists, and rescue your furry friend!\n', 'text-story');
+            addLog('With your trusty sidekick Chazz by your side and your Gibson Guitar in hand,', 'text-story');
+            addLog('you must journey north, defeat the cultists, and rescue your furry friend!\n', 'text-story');
             addLog('Type "help" for commands or "look" to begin.\n', 'text-warning');
             describeLocation();
             updateStats();
