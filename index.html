@@ -157,7 +157,7 @@
             locations: {
                 cottage: {
                     name: 'Caleb\'s Cottage',
-                    desc: 'Your humble home. A cozy cottage where you and your beloved cat Ptouneigh have lived peacefully... until she was taken.\nYour trusty Gibson Guitar leans against the wall - you\'ve decided to use it as your weapon.\nChazz stands ready by the door, fidgeting nervously.',
+                    desc: 'Your humble home. A cozy cottage where you and your beloved cat Ptouneigh have lived peacefully... until he was taken.\nYour trusty Gibson Guitar leans against the wall - you\'ve decided to use it as your weapon.\nChazz stands ready by the door, fidgeting nervously.',
                     exits: { north: 'village', east: 'forest' },
                     npcs: ['chazz_home']
                 },
@@ -199,7 +199,7 @@
                 },
                 tower_chamber: {
                     name: 'The Tower - Tracey\'s Chamber',
-                    desc: 'You stand in a circular chamber at the top of the tower. Magical crystals provide eerie purple light.\nIn a cage, you see Ptouneigh! She meows desperately.\nTracey stands before the cage, squinting at you. "Who dares enter my domain?! Speak up, I can barely see you!"',
+                    desc: 'You stand in a circular chamber at the top of the tower. Magical crystals provide eerie purple light.\nIn a cage, you see Ptouneigh! He meows desperately.\nTracey stands before the cage, squinting at you. "Who dares enter my domain?! Speak up, I can barely see you!"',
                     exits: { south: 'tower_base' },
                     enemy: 'tracey',
                     boss: true
@@ -538,7 +538,7 @@
             if (enemy.name === 'Tracey the Sorceress') {
                 game.traceyDefeated = true;
                 addLog(`\nTracey collapses, her spell breaking. The cage door swings open!`, 'text-story');
-                addLog(`Ptouneigh leaps out and rushes into your arms, purring loudly!`, 'text-story');
+                    addLog(`Ptouneigh leaps out and rushes into your arms, purring loudly! Your brave boy is safe!`, 'text-story');
                 addLog(`\n🏆 VICTORY! You have rescued Ptouneigh!`, 'text-success');
                 addLog(`The Sionist cult, without their sorceress leader, crumbles. Peace returns to the land.`, 'text-story');
                 game.victory = true;
@@ -551,7 +551,7 @@
         window.addEventListener('load', () => {
             addLog('⚔️ ASTHENIA - RESCUE THE CAT ⚔️\n', 'text-location');
             addLog('Your beloved cat Ptouneigh has been captured by the evil sorceress Tracey!', 'text-story');
-            addLog('She leads a cult of religious fanatics known as the Sionists.', 'text-story');
+            addLog('She leads a cult of religious fanatics known as the Sionists. But Ptouneigh is not alone - you\'ll rescue him!', 'text-story');
             addLog('With your trusty sidekick Chazz by your side and your Gibson Guitar in hand,', 'text-story');
             addLog('you must journey north, defeat the cultists, and rescue your furry friend!\n', 'text-story');
             addLog('Type "help" for commands or "look" to begin.\n', 'text-warning');
